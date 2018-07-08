@@ -1,0 +1,70 @@
+<html>
+  <head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <!--
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.0.4/redux.js"></script>
+  -->
+</head>
+<body>
+<div id="counter">
+0
+</div>
+<button id="increase" onclick="increaseCount()">Increase</button>
+<button id="decrease" onclick="decreaseCount()">
+decrease
+</button>
+</body>
+<script>
+	const counter = (state = 0, action) =>{
+	switch(action.type){
+  	case 'INCREMENT':
+    	return state +1;
+    case 'DECREMENT':
+    	return state -1;
+    default:
+    	return state;
+  }
+}
+
+const createStore = (reducer) =>{
+	let state;
+  let listeners = [];
+  
+  const getState = ()=> state;
+  
+  const dispatch = (action) =>{
+  	state = reducer(state, action);
+    console.log("number of listeners", listeners.length);
+    listeners.forEach(listener => listener());
+  }
+  
+  const subscribe = (listener)=>{
+  	listeners.push(listener);
+  }
+  dispatch({});//initialization
+  
+  return {getState, dispatch, subscribe};
+};
+
+//const {createStore} = Redux;
+const store = createStore(counter);//bind with reducer
+console.log(store.getState());
+//store.dispatch({type:'INCREMENT'});
+
+const render = ()=>{
+	document.getElementById("counter").innerText = store.getState();
+}
+
+store.subscribe(render);
+//render();
+actionCallback = (actionType) =>{
+	return ()=>{
+		store.dispatch({type:actionType});
+  }
+}
+increaseCount = actionCallback("INCREMENT");
+decreaseCount = actionCallback("DECREMENT");
+</script>
+
+</html>
