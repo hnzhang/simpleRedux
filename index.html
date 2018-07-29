@@ -7,18 +7,26 @@
 </head>
 <body>
   <div class="container">
-    <h1>Use plain HTML and Javascript to demo idea of React-Redux</h1>
-    <div><details>
-      <summary>What is Redux</summary>
-      <dt>Store</dt>
-      <dt>Dispatcher</dt>
-      <dt>Reducer</dt>
-    </details></div>
+    <h1 class="page-header">Use plain HTML and Javascript to demo idea of React-Redux</h1>
+    <div class="panel panel-default">
+      <div class="pannel-body">
+        <details>
+          <summary>What is Redux</summary>
+          <dl>
+            <dt>Store</dt>
+            <dd>store of data, it should be single source for redux/flux</dd>
+            <dt>Dispatcher</dt>
+            <dt>Reducer</dt>
+          </dl>
+        </details>
+      </div>
+    </div>
     <div class="jumbotron">
       <h2>Counter:</h2>
       <div id="counter" class="well"> 0 </div>
       <button id="increase" onclick="increaseCount()" class="btn btn-primary">Increase</button>
       <button id="decrease" onclick="decreaseCount()" class="btn btn-primary"> decrease </button>
+      <p>You can view the source code of this page to see how it works</p>
     </div>
   </div>
 </body>
