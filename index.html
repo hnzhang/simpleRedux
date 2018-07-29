@@ -1,19 +1,26 @@
+<!DOCTYPE html>
 <html>
   <head>
   <meta charset="utf-8">
-  <title>JS Bin</title>
-  <!--
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.0.4/redux.js"></script>
-  -->
+  <title>Redux idea demo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-<div id="counter">
-0
-</div>
-<button id="increase" onclick="increaseCount()">Increase</button>
-<button id="decrease" onclick="decreaseCount()">
-decrease
-</button>
+  <div class="container">
+    <h1>Use plain HTML and Javascript to demo idea of React-Redux</h1>
+    <div><details>
+      <summary>What is Redux</summary>
+      <dt>Store</dt>
+      <dt>Dispatcher</dt>
+      <dt>Reducer</dt>
+    </details></div>
+    <div class="jumbotron">
+      <h2>Counter:</h2>
+      <div id="counter" class="well"> 0 </div>
+      <button id="increase" onclick="increaseCount()" class="btn btn-primary">Increase</button>
+      <button id="decrease" onclick="decreaseCount()" class="btn btn-primary"> decrease </button>
+    </div>
+  </div>
 </body>
 <script>
 	const counter = (state = 0, action) =>{
@@ -47,10 +54,8 @@ const createStore = (reducer) =>{
   return {getState, dispatch, subscribe};
 };
 
-//const {createStore} = Redux;
 const store = createStore(counter);//bind with reducer
 console.log(store.getState());
-//store.dispatch({type:'INCREMENT'});
 
 const render = ()=>{
 	document.getElementById("counter").innerText = store.getState();
